@@ -1,0 +1,34 @@
+ou can also send commands to set up TCP/IP connection in the ‘Script Mode’ tab of the AT Command Tester,
+
+
+//Check the registration status
+AT+CREG?
+
+//Check attach status
+AT+CGACT?
+
+//Attach to the network
+AT+CGATT=1
+
+//Wait for Attach
+WAIT=7
+
+//Start task ans set the APN. Check your carrier APN
+AT+CSTT="bluevia.movistar.es"
+
+//Bring up the wireless connection
+AT+CIICR
+
+//Wait for bringup
+WAIT=6
+
+//Get the local IP address
+AT+CIFSR
+
+//Start a TCP connection to remote address. Port 80 is TCP.
+AT+CIPSTART="TCP","178.159.98.51","3000"
+
+//Send teh TCP data
+AT+CIPSEND
+>
+GET https://www.m2msupport.net/m2msupport/http_get_test.php HTTP/1.0
